@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Autocomplete Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.13.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  <style>
+    .ui-helper-hidden-accessible { display: none !important; }
+  </style>
+</head>
+<body>
+<div>
+  <label for="search">Search University:</label>
+  <input type="text" id="search" name="search">
+  <label for="department">Select Department:</label>
+  <select id="department">
+    <option value="">Select a department...</option>
+  </select>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $("#search").autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: "/search/autocomplete",
+          type: "GET",
+          data: { term: request.term },
+          dataType: "json",
+          success: function(data) {
+            response($.map(data, function(item) {
+              return {
+                label: item.schoolName,
+                value: item.schoolName,
+                univId: item.id  // 대학 ID도 전송 받아야 합니다.
+              };
+            }));
+          }
+        });
+      },
+      minLength: 1,
+      focus: function(event, ui) {
+        return false;
+      },
+      select: function(event, ui) {
+        $("#search").val(ui.item.value); // 입력 필드에 대학 이름 설정
+        loadDepartments(ui.item.univId); // 선택된 대학의 ID를 사용하여 학과 목록 로드
+        return false;
+      }
+    });
+
+    function loadDepartments(univId) {
+      $.ajax({
+        url: "/get-departments",
+        type: "GET",
+        data: { univId: univId },
+        dataType: "json",
+        success: function(data) {
+          var departmentSelect = $("#department");
+          departmentSelect.empty(); // 기존 목록을 비웁니다.
+          departmentSelect.append('<option value="">Select a department...</option>');
+          $.each(data, function(index, item) {
+            departmentSelect.append($('<option>', {
+              value: item.deptId,
+              text : item.deptName
+            }));
+          });
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
