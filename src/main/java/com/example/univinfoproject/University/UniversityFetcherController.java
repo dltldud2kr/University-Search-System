@@ -60,7 +60,7 @@ public class UniversityFetcherController {
             saveSchoolInfoToDB(schoolInfo);
             return ResponseEntity.ok().body("학교 정보를 성공적으로 저장했습니다.");
         } catch (Exception e) {
-            log.error("Error occurred while saving school data to database", e);
+            log.error("Error occurred while saving school data to database.", e);
             return ResponseEntity.status(500).body("학교 정보를 저장하는 도중에 오류가 발생했습니다.");
         }
     }
