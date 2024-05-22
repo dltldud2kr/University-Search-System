@@ -6,7 +6,7 @@
 ---
 
 ### 프로젝트 개요
-영진전문대학교 캡스톤에 활용할 대학 정보 조회 및 인증을 위해 사용. [Universe](https://github.com/dltldud2kr/universus_backend)
+영진전문대학교 캡스톤에 활용할 대학 정보 조회 및 인증을 위해 사용. [Universus](https://github.com/dltldud2kr/universus_backend)
 
 ---
 
