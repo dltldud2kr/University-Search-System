@@ -15,7 +15,8 @@
 - [로고이미지 참고 자료](https://github.com/hiphapis/univ_logos) 
 Johan Kim
 hiphapis
-- 대학교 선택시 해당 대학 로고 이미지 노출
+- **대학교 선택시 해당 대학 학과 정보 리스트 반환**
+- **대학교 선택시 해당 대학 로고 이미지 노출**
 
 #### 초기 세팅 
 - 행정구역에 맞는 regionCode 저장
