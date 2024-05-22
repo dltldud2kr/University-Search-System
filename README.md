@@ -5,6 +5,7 @@
 
 ### 프로젝트 개요
 영진전문대학교 캡스톤 주제로 활용할 대학 정보 활용을 위해 사용.
-[공공데이터포털](https://www.data.go.kr/data/15014632/fileData.do)
+
+- [공공데이터포털](https://www.data.go.kr/data/15014632/fileData.do)
 
 - 전국 대학 및 해당 대학 학과를 Python을 통해 가공 후 sql 문으로 저장 
