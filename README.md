@@ -31,5 +31,5 @@ hiphapis
 
 ### 이미지
 
-
+<img src="https://github.com/dltldud2kr/University-Search-System/assets/105353307/f7c3c52e-8066-43d3-b7a3-0619610d5798" alt="면메인화" width="200px" height="390px">
 
