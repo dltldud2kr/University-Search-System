@@ -22,7 +22,7 @@
 #### 마무리
 - 초기 openApi 로 받은 값들을 활용하여 데이터 가공 준비
 - 받은 데이터를 활용하여 전국 대학 및 해당 대학 학과를 Python을 통해 가공 후 sql 문으로 저장 
-- univAndDepart.py  ,  logoMapping.py
+- 활용 파이썬 파일 : univAndDepart.py  ,  logoMapping.py
 
 ---
 
