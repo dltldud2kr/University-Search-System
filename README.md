@@ -12,7 +12,9 @@
 
 ### 프로젝트 소개
 - [공공데이터포털](https://www.data.go.kr/data/15014632/fileData.do)  [커리어넷](https://www.career.go.kr/cnet/front/openapi/openApiSchoolCenter.do) OpenApi를 활용하여 대학 정보 및 학과 정보 조회
-- [로고이미지 참고자료](https://github.com/hiphapis/univ_logos)
+- [로고이미지 참고 자료](https://github.com/hiphapis/univ_logos) 
+Johan Kim
+hiphapis
 - 대학교 선택시 해당 대학 로고 이미지 노출
 
 #### 초기 세팅 
