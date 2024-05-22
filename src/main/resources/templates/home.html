@@ -2,25 +2,77 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Search Autocomplete Example</title>
+  <title>University Search</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.13.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <style>
-    .ui-helper-hidden-accessible { display: none !important; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .search-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .search-form label {
+      margin-right: 10px;
+    }
+    .search-input {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+    }
+    .department-select {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+    }
+    .logo-img {
+      max-width: 100px;
+      margin-top: 10px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-<div>
-  <label for="search">Search University:</label>
-  <input type="text" id="search" name="search">
-  <label for="department">Select Department:</label>
-  <select id="department">
-    <option value="">Select a department...</option>
-  </select>
+<div class="container">
+  <h1 style="text-align: center;">University Search System</h1>
+
+  <!-- University search form -->
+  <div class="search-form">
+    <input type="text" id="search" name="search" class="search-input">
+    <img id="logoImg" class="logo-img" src="#" alt="University Logo">
+  </div>
+
+  <!-- Department select -->
+  <div>
+    <label for="department"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+    <select id="department" class="department-select">
+      <option value="">학과를 선택하세요.</option>
+    </select>
+  </div>
+
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 <script>
   $(document).ready(function() {
     $("#search").autocomplete({
@@ -35,7 +87,8 @@
               return {
                 label: item.schoolName,
                 value: item.schoolName,
-                univId: item.id  // 대학 ID도 전송 받아야 합니다.
+                univId: item.id,
+                logoImg: item.logoImg
               };
             }));
           }
@@ -43,13 +96,22 @@
       },
       minLength: 1,
       focus: function(event, ui) {
+        $("#logoImg").attr("src", ui.item.logoImg).show();
         return false;
       },
       select: function(event, ui) {
-        $("#search").val(ui.item.value); // 입력 필드에 대학 이름 설정
-        loadDepartments(ui.item.univId); // 선택된 대학의 ID를 사용하여 학과 목록 로드
+        $("#search").val(ui.item.value);
+        loadDepartments(ui.item.univId);
         return false;
+      },
+      messages: {
+        noResults: '',
+        results: function() {}
       }
+    });
+
+    $("#search").on("search", function() {
+      $(this).autocomplete("close");
     });
 
     function loadDepartments(univId) {
@@ -60,8 +122,8 @@
         dataType: "json",
         success: function(data) {
           var departmentSelect = $("#department");
-          departmentSelect.empty(); // 기존 목록을 비웁니다.
-          departmentSelect.append('<option value="">Select a department...</option>');
+          departmentSelect.empty();
+          departmentSelect.append('<option value="">학과를 선택하세요.</option>');
           $.each(data, function(index, item) {
             departmentSelect.append($('<option>', {
               value: item.deptId,
@@ -72,6 +134,7 @@
       });
     }
   });
+
 </script>
 </body>
 </html>
