@@ -10,7 +10,7 @@
 - 👉 AWS S3 에 **대학별 로고 이미지** 저장 
 - 👉 1번에서 매핑한 데이터와 로고 이미지 매핑
      
-- 영진전문대학교 캡스톤에 활용할 대학 정보 조회 및 회원가입시 대학 인증을 위해 사용. [Universus](https://github.com/dltldud2kr/universus_backend)
+- ⭐ 영진전문대학교 캡스톤에 활용할 대학 정보 조회 및 회원가입시 대학 인증을 위해 사용. [Universus](https://github.com/dltldud2kr/universus_backend)
 
 ---
 
